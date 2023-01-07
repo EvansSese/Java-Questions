@@ -1,7 +1,7 @@
 public class Twin {
     public static void main(String[] args) {
         int[] arr;
-        arr = new int[] { 3, 5, 8, 10, 27 };
+        arr = new int[] { 13, 14, 15, 3, 5 };
         System.out.println(isTwin(arr));
     }
 
@@ -35,29 +35,12 @@ public class Twin {
                 int lowerNumber = number - 2;
 
                 // check if upper number is prime
-                if (isPrime(upperNumber) == 1) {
-                    // check if the number is in the array
-                    for (int j = 0; j < arr.length; j++) {
-                        if (arr[j] == upperNumber) {
-                            twinFlag = 1;
-                        } else {
-                            twinFlag = 0;
-                        }
+                for (int j = 0; j < arr.length; j++) {
+                    if ((arr[j] == upperNumber && isPrime(upperNumber)==1) || (arr[j] == lowerNumber && isPrime(lowerNumber)==1) ) {
+                        twinFlag = 1;
+                        break;
                     }
                 }
-
-                // check if lower number is prime
-                if (isPrime(lowerNumber) == 1) {
-                    // check if the number is in the array
-                    for (int j = 0; j < arr.length; j++) {
-                        if (arr[j] == lowerNumber) {
-                            twinFlag = 1;
-                        } else {
-                            twinFlag = 0;
-                        }
-                    }
-                }
-
             }
         }
 
