@@ -1,6 +1,6 @@
 public class Inertial {
     public static void main(String[] args) {
-        int[] a = { 4,3,2,1 };
+        int[] a = { 1,2,3,4 };
         System.out.println(isInertial(a));
 
         // int[] b = { 2, 3, 5, 7 };
@@ -23,16 +23,16 @@ public class Inertial {
                 }
             }
 
+            if(a[i]%2==0){ //check if its even
+                if(a[i]>evenVal){
+                    evenVal = a[i];
+                }
+            }
+
             if(a[i]>maxVal){
                 maxVal = a[i]; //set maxVal
             }
 
-            if(a[i]%2==0){ //check if its even
-                if(a[i]>evenVal){
-                    prevEvenVal = evenVal;
-                    evenVal = a[i];
-                }
-            }
         }
 
         if((hasOdd) && (maxVal % 2 ==0) && (leastOddVal>prevEvenVal)){ //check if all 3 conditions are true
