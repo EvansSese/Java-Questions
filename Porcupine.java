@@ -1,6 +1,6 @@
 public class Porcupine {
     public static void main(String[] args) {
-        System.out.println(findPorcupineNumber(140));
+        System.out.println(findPorcupineNumber(1));
     }
 
     public static int isPrime(int number) {
@@ -22,16 +22,24 @@ public class Porcupine {
 
     public static int findPorcupineNumber(int n){
         int porcupineNum = 0;
-        int stopVal = Integer.MAX_VALUE;
-        for(int num = n+1; num<stopVal; num++){
-            if(isPrime(num)==1 && num%10==9){
-                for(int nextNum = num+1;nextNum<stopVal;nextNum++){
-                    if(isPrime(nextNum)==1 && nextNum%10==9){
-                        porcupineNum = num;
-                        return porcupineNum;
+        boolean isPorcupine = false;
+        n++;
+        while(n < Integer.MAX_VALUE){
+            if(isPorcupine){
+                if(isPrime(n)==1){
+                    break;
+                }else{
+                    isPorcupine = false;
+                }
+            }else{
+                if(isPrime(n)==1){
+                    if(n%10==9){
+                        isPorcupine = true;
+                        porcupineNum = n;
                     }
                 }
             }
+
         }
         return porcupineNum;
     }
