@@ -1,60 +1,43 @@
 public class Inertial {
     public static void main(String[] args) {
-        int[] a = { 1, 2, 3, 4 };
+        int[] a = { 8, 4, 20, 9, 2, 11 };
         System.out.println(isInertial(a));
 
-        int[] b = { 2, 3, 5, 7 };
+        int[] b = { 12, 11, 4, 9, 2, 3, 10 };
         System.out.println(isInertial(b));
     }
 
     static int isInertial(int[] a) {
-        int isInertial = 0;
-        int oddCount = 0;
-        int evenCount = 0;
-        int maxValue = 0;
-        int[] oddValues = new int[a.length];
-        int[] evenValues = new int[a.length];
+        boolean hasOdd = false; //default value is false
+        boolean oddIsGreater = true; //default value is true
+        int maxVal = Integer.MIN_VALUE;
+        int leastOddVal= Integer.MAX_VALUE;
 
-        // scan through the array, get number of odd numbers and even numbers, add them
-        // to their respective lists
-        for (int i = 0; i < a.length; i++) {
-            // check for maximum value
-            if (a[i] > maxValue) {
-                maxValue = a[i];
-            }
-
-            // check for odd and even
-            if (a[i] % 2 != 0) {
-                // is odd number
-                oddValues[oddCount] = a[i];
-                oddCount++;
-            } else {
-                // is even number
-                evenValues[evenCount] = a[i];
-                evenCount++;
-            }
-
-        }
-
-        if ((oddCount > 0) && (maxValue % 2 == 0)) {
-            // check if odd values are greater than every even value, which is not the
-            // greates value
-            for (int j = 0; j < evenValues.length; j++) {
-                for (int k = 0; k < oddValues.length; k++) {
-                    if (evenValues[j] != maxValue) {
-                        if (oddValues[k] > evenValues[j]) {
-                            isInertial = 1;
-                            break;
-                        } else {
-                            isInertial = 0;
-                            break;
-                        }
-                    }
+        //loop through the array to check for condition 1,2 and evaluate for condition 3
+        for(int i = 0; i<a.length;i++){
+            if(a[i]%2!=0){ //check for odd number
+                hasOdd = true; //pass condition 1
+                if(a[i]<leastOddVal){ //set least odd value and max value
+                    leastOddVal = a[i];
                 }
             }
-        } else {
-            isInertial = 0;
+
+            if(a[i]>maxVal){ //check for max val
+                maxVal = a[i]; //set maxVal
+            }
+
         }
-        return isInertial;
+
+        for(int j=0; j<a.length;j++){ //loop to check if each odd value is greater than every even except maxVal
+            if(a[j]%2==0 && (leastOddVal<a[j]) && (a[j]!=maxVal)){
+                oddIsGreater = false;
+            }
+        }
+
+        if((hasOdd) && (maxVal % 2 ==0) && (oddIsGreater)){ //check if all 3 conditions are true
+            return 1;
+        } else{
+            return 0;
+        }
     }
 }
