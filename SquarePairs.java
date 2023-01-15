@@ -1,6 +1,6 @@
 public class SquarePairs {
     public static void main(String[] args) {
-        int[] a = { 9 };
+        int[] a = { 9, 0, 2, -5, 7 };
         System.out.println(countSquarePairs(a));
     }
 
@@ -21,12 +21,12 @@ public class SquarePairs {
     static int countSquarePairs(int[] a) {
         int squarePairsCount = 0;
 
-        for (int targetIndex = 0; targetIndex < a.length; targetIndex++) {
-            for (int compareIndex = 0; compareIndex < a.length; compareIndex++) {
-                if (a[targetIndex] > 0 && a[compareIndex] > 0) {
-                    if (a[targetIndex] < a[compareIndex]) {
-                        if (isPerfectSquare(a[targetIndex] + a[compareIndex]) == 1) {
-                            squarePairsCount++;
+        for (int targetIndex = 0; targetIndex < a.length; targetIndex++) { //loop to get x
+            for (int compareIndex = 0; compareIndex < a.length; compareIndex++) { //loop to get y
+                if (a[targetIndex] > 0 && a[compareIndex] > 0) { //both x and y should be greater than 0
+                    if (a[targetIndex] < a[compareIndex]) { // x should be greater than y
+                        if (isPerfectSquare(a[targetIndex] + a[compareIndex]) == 1) { //sum of x and y should be perfect square
+                            squarePairsCount++; // increment perfect square count
                         }
                     }
                 }
