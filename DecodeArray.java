@@ -1,28 +1,31 @@
 public class DecodeArray {
     public static void main(String[] args) {
-        int[] a = { 1, 1 };
+        int[] a = { 0, -3, 0, -4, 0 };
         System.out.println(decodeArray(a));
     }
 
+    // use modulo operation to concatenate the digits of the number
     public static int decodeArray(int[] a) {
-        String s = Integer.toString(0);
-        for (int i = 1; i < a.length; i++) { // start at second element, so that we can get the first and find the
-                                             // diff
-            int prev_element = a[i - 1];
-            int current_element = a[i];
-            int element_difference = Math.abs(prev_element - current_element); // abs difference between the two
-                                                                               // elements
+        double encodedNum = 0; // initialize the encoded number
+        double c = (a.length - 2);
+        for (int i = 1; i < a.length; i++) {
+            double mod = Math.pow(10, c); // initialize modulo
+            int prev_num = a[i - 1];
+            int current_num = a[i];
+            int diff = Math.abs(prev_num - current_num); // get difference
 
-            String num_string = Integer.toString(element_difference); // convert to string so that we can concatenate
-            s = s + num_string; // concatenate the string
+            double diff_mod = diff * mod; // multiply by current modulo
+            c--; // decrease power
+
+            encodedNum = encodedNum + diff_mod;
         }
-
-        int encodedNum = Integer.parseInt(s); // convert back to integer
 
         if (a[0] < 0) {
-            encodedNum = -1 * encodedNum; // check if first element is negative, then encoded number is also negative
+            encodedNum = -1 * encodedNum;
         }
 
-        return encodedNum; // return encoded number
+        int num = (int) encodedNum; // convert double to int using typecasting
+
+        return num;
     }
 }
