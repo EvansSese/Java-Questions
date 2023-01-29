@@ -10,16 +10,16 @@ public class IntegerBasedRounding {
         // create a copy of the same array given, which we shall modify later according
         // to rounding
         int[] b = a;
-        if (n > 0) {
+        if (n > 0) { // check if n is positive
             // loop through array a
             for (int i = 0; i < a.length; i++) {
                 // check each element and round to n
                 int num = a[i];
-                if (num > 0) {
-                    int base_round = ((Math.round(num / n)) * n);
-                    int distance = Math.abs(base_round - num);
+                if (num > 0) { // check if num is positive
+                    int base_round = ((Math.round(num / n)) * n); // find base round
+                    int distance = Math.abs(base_round - num); // find distance
 
-                    if (distance < (float) n / 2) {
+                    if (distance < (float) n / 2) { // check how close the num is to the base round
                         b[i] = base_round;
                     } else {
                         b[i] = base_round + n;
@@ -28,7 +28,8 @@ public class IntegerBasedRounding {
             }
         }
 
-        System.out.println(Arrays.toString(b));
+        System.out.println(Arrays.toString(b)); // print the array NOTE:Remove this line if you are answering MUM
+                                                // question
 
     }
 }
