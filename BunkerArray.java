@@ -33,7 +33,7 @@ public class BunkerArray {
                 }
             }
         }
-
+        //return 0 if none of the condition is met
         return 0;
     }
 }
