@@ -14,6 +14,7 @@ public class Nice {
         return 1;
     }
 
+    // create a helper function to check if any of the adjacent values are available
     public static int isAvailable(int[] a, int n) {
         // loop through to see if the adjacent values are available
         for (int j = 0; j < a.length; j++) {
