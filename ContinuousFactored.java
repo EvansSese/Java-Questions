@@ -11,7 +11,7 @@ public class ContinuousFactored {
         System.out.println(isContinuousFactored(2));
         System.out.println(isContinuousFactored(13));
 
-        System.out.println(isContinuousFactored(336));
+        System.out.println(isContinuousFactored(720));
     }
 
     public static int isContinuousFactored(int n) {
