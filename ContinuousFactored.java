@@ -15,8 +15,6 @@ public class ContinuousFactored {
     }
 
     public static int isContinuousFactored(int n) {
-        // set flag to hold either 0 or 1;
-        int flag = 0;
         // loop through factors from 2 onward
         for (int firstFactor = 2; firstFactor < n / 2; firstFactor++) {
             // divide the number to see if its a factor
@@ -27,8 +25,7 @@ public class ContinuousFactored {
                     // confirm if the number has only 2 factors
                     int currentProduct = firstFactor * secondFactor;
                     if (currentProduct == n) {
-                        flag = 1;
-                        return flag;
+                        return 1;
                     } else {
                         // check for consecutive factors
                         for (int nextFactor = secondFactor + 1; nextFactor < secondFactor + 2; nextFactor++) {
@@ -36,8 +33,7 @@ public class ContinuousFactored {
                             if (n % nextFactor == 0) {
                                 int finalProduct = currentProduct * nextFactor;
                                 if (finalProduct == n) {
-                                    flag = 1;
-                                    return flag;
+                                    return 1;
                                 } else {
                                     // increase currentProduct
                                     currentProduct = currentProduct * nextFactor;
@@ -48,6 +44,6 @@ public class ContinuousFactored {
                 }
             }
         }
-        return flag;
+        return 0;
     }
 }
